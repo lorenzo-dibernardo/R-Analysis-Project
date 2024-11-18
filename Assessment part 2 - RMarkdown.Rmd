@@ -1,0 +1,141 @@
+---
+title: "Assessment part 2 - RMarkdown "
+author: "Lorenzo di Bernardo - 24010510"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+library(tidyverse)
+library(plotly)
+
+# Load the cleaned dataset
+cleaned_dataset1 <- readRDS("cleaned_dataset1.rds")
+
+```
+
+# Demography and Behaviour - A Dataset {.tabset}
+
+# {.tabset}
+
+## General Overview
+
+This report provides a summary and visual exploration of a simulated dataset containing demographic and behavioral information, specifically focusing on the following variables:
+
+-   *ID*
+-   *Age*
+-   *Income*
+-   *Gender*
+-   *Satisfaction*
+-   *Date*
+
+## The Data
+
+### Overview
+
+A quick overview at the data at hand, from raw data to a cleaned dataset shown in the form of a table.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+# Summarize data structure and head
+str(cleaned_dataset1)
+head(cleaned_dataset1)
+
+# Display first few rows as a table
+head(cleaned_dataset1) %>% 
+  knitr::kable(caption = "A table: First Few Rows of the Cleaned Dataset")
+
+```
+
+
+## Demographics and Satisfaction
+
+### Age Distribution
+
+Histogram for *age*.
+This visualization provides an interactive view of the age distribution in the dataset, allowing to identify age ranges with high or low frequencies*. The histogram format makes it easy to see the general age spread and identify patterns or gaps in the dataset’s age demographics.
+
+```{r pressure, echo=FALSE}
+p1 <- ggplot(cleaned_dataset1, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  labs(title = "Distribution of Age", x = "Age", y = "Frequency") +
+  theme_minimal()
+ggplotly(p1)
+
+```
+
+*Frequency refers to the number of times a specific valye appears in the Age variable of the dataset.
+
+#### Satisfaction Score Distribution
+
+Bar plot for *satisfaction* distribution.
+This visualization helps see which satisfaction scores are most or least common, providing an overview of the satisfaction distribution within the dataset.
+
+```{r}
+p2 <- ggplot(cleaned_dataset1, aes(x = factor(Satisfaction))) +
+  geom_bar(fill = "lightgreen", color = "black") +
+  labs(title = "Distribution of Satisfaction Scores", x = "Satisfaction Score", y = "Count") +
+  theme_minimal()
+ggplotly(p2)
+```
+
+
+## Gender Analysis
+
+### Gender Distribution
+
+Bar plot for *gender counts*.
+This type of plot helps assess the representation of each gender in the dataset, useful for identifying any imbalances and missing or undisclosed values.
+
+```{r}
+p3 <- ggplot(cleaned_dataset1, aes(x = Gender)) +
+  geom_bar(fill = "lightgreen", color = "black") +
+  labs(title = "Gender Distribution", x = "Gender", y = "Count") +
+  theme_minimal()
+ggplotly(p3)
+```
+
+### Income Distribution by Gender
+
+Density plot to see *income distributions* across genders. 
+A useful way to represent the distribution of income values across different genders within the dataset.
+
+```{r}
+p4 <- ggplot(cleaned_dataset1, aes(x = Income, fill = Gender)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Income Distribution by Gender", x = "Income (GBP pa)", y = "Density") +
+  theme_minimal()
+ggplotly(p4)
+```
+
+### Satisfaction by Gender
+
+Boxplot showing *satisfaction* scores split by gender.
+This plot allows for a quick comparison of satisfaction levels between genders, helping identify differences in median scores, variability within each gender, and any potential outliers.
+
+```{r}
+p5 <- ggplot(cleaned_dataset1, aes(x = Gender, y = Satisfaction, fill = Gender)) +
+  geom_boxplot() +
+  labs(title = "Satisfaction by Gender", x = "Gender", y = "Satisfaction Score") +
+  theme_minimal()
+ggplotly(p5)
+```
+
+## Summary
+
+### Conclusions
+
+This report offers an initial examination of the dataset, uncovering key demographic and behavioral trends that provide a foundation for deeper insights. The visualizations and summary tables highlight critical patterns within the data, such as variations in **Age, Income**, and **Satisfaction** across **Gender** and **Time**.
+
+The **Age Distribution** visualization reveals the overall age spread within the sample, providing a demographic profile that can inform age-related trends or correlations with other variables, such as income and satisfaction levels. Income Analysis by Gender offers insight into potential income disparities, uncovering any notable patterns between gender and income distribution, which may be further examined to understand economic behavior or gender-related financial trends.
+
+The **Satisfaction Score Distribution** and its breakdown by gender show the central tendency and variability in satisfaction scores, highlighting any differences in satisfaction levels that may exist between groups. The **Income Over Time visualization** captures potential trends or shifts in income over the sampled period, which may reveal seasonal patterns, economic changes, or other temporal factors influencing income levels.
+
+These findings create a reader-friendly overview that makes the dataset accessible and well-prepared for future analysis.
