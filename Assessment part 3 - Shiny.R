@@ -4,7 +4,9 @@ library(ggplot2)
 library(plotly)
 
 # Dataset
-cleaned_dataset1 <- read.csv("C:/Users/dibe_/OneDrive/Desktop/UHI Git-RStudio/Intro_to_R_Data_Vis/R/RMarkdown Reports/cleaned_dataset1.csv")
+
+cleaned_dataset1 <- read.csv("data/cleaned_dataset1.csv")
+
 
 # Define UI for application
 ui <- fluidPage(
