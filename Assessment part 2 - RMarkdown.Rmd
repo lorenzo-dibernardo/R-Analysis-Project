@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
 	message = FALSE,
 	warning = FALSE
 )
+setwd("C:/Users/dibe_/OneDrive/Desktop/UHI Git-RStudio/Intro_to_R_Data_Vis/R/RMarkdown Reports")
 ```
 
 ```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
@@ -18,9 +19,10 @@ library(tidyverse)
 library(plotly)
 
 # Load the cleaned dataset
-cleaned_dataset1 <- readRDS("cleaned_dataset1.rds")
+cleaned_dataset1 <- readRDS("C:/Users/dibe_/OneDrive/Desktop/UHI Git-RStudio/Intro_to_R_Data_Vis/R/RMarkdown Reports/cleaned_dataset1.rds")
 
 ```
+
 
 # Demography and Behaviour - A Dataset {.tabset}
 
