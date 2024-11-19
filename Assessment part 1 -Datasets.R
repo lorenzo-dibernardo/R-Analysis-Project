@@ -8,10 +8,18 @@
 
 # Load libraries
 library(tidyverse)
-# Add any additional packages required here
 library(dplyr)
 library(lubridate)
 library(ggplot2)
+library(rstudioapi)  # For dynamic working directory
+
+# Automatically set the working directory
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+# Create the 'data' folder if it doesn't exist
+if (!dir.exists("data")) {
+  dir.create("data")
+}
 
 # Function to create a messy datasets
 create_messy_dataset <- function(n) {
@@ -62,11 +70,10 @@ long_format <- cleaned_dataset1 %>%
 
 long_format
 
-# Save the dataset for RMarkdown use
 
-setwd("C:/Users/dibe_/OneDrive/Desktop/UHI Git-RStudio/Intro_to_R_Data_Vis/R/RMarkdown Reports")
-saveRDS(cleaned_dataset1, "cleaned_dataset1.rds")
-write.csv(cleaned_dataset1, "cleaned_dataset1.csv", row.names = FALSE)
+# Save the cleaned dataset for further use
+saveRDS(cleaned_dataset1, "data/cleaned_dataset1.rds")
+write.csv(cleaned_dataset1, "data/cleaned_dataset1.csv", row.names = FALSE)
 
 
 
