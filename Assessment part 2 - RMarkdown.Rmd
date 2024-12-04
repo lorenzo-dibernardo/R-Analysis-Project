@@ -43,17 +43,21 @@ This report provides a summary and visual exploration of a simulated dataset con
 
 ### Overview
 
-A quick overview at the data at hand, from raw data to a cleaned dataset shown in the form of a table.
+A quick overview at the data at hand, from *raw* data...
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # Summarize data structure and head
 str(cleaned_dataset1)
 head(cleaned_dataset1)
+```
 
+... to a *cleaned* dataset shown in the form of a table.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # Display first few rows as a table
 head(cleaned_dataset1) %>% 
   knitr::kable(caption = "A table: First Few Rows of the Cleaned Dataset")
-
 ```
 
 
