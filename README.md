@@ -1,6 +1,3 @@
-## Overview
-This project demonstrates the use of R for data simulation, cleaning, and visualization. It is divided into three parts:
-
 ## Files Description
 
 ### 1. `Assessment part 1 -Datasets.R`
@@ -31,21 +28,11 @@ This project demonstrates the use of R for data simulation, cleaning, and visual
 - **Key Features**:
   - Allows users to visualize demographic and satisfaction trends.
   - Interactive plots (e.g., boxplots, bar plots).
+  - Allows plots amendment according to accessibility needs. 
 - **Instructions**:
   - Run the file in RStudio.
   - Ensure the `data/cleaned_dataset1.csv` file exists in the `data/` folder.
   - Access the app through the Shiny UI.
-
-## Prerequisites
-- **R Version**: ≥ 4.0.0
-- **Required Packages**:
-  - `tidyverse`
-  - `lubridate`
-  - `ggplot2`
-  - `plotly`
-  - `rstudioapi`
-  - `knitr`
-  - `shiny`
 
 ## Reproducibility
 - **Working Directory**:
@@ -68,9 +55,5 @@ This project demonstrates the use of R for data simulation, cleaning, and visual
    - Knit `Assessment part 2 - RMarkdown.Rmd` for the HTML report.
 4. **Launch Shiny App**:
    - Run `Assessment part 3 - Shiny.R` to explore the data interactively.
-
-## Notes
-- Ensure the required packages are installed before running the scripts.
-- The `data/` folder is automatically created if missing during script execution.
 
 
